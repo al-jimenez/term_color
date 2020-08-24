@@ -9,10 +9,10 @@ Used / created for macOS bash but can be modified for other OS.
 
 ## Help menu
 When you execute term_color -? you will get the following:
-![Help menu]()
+![Help menu](https://github.com/al-jimenez/term_color/blob/master/term_color_help.png)
 
 ## With no options
-![without options]()
+![without options](https://github.com/al-jimenez/term_color/blob/master/term_colors.png)
 
 ## Usage Examples
 

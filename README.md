@@ -21,4 +21,4 @@ When you execute term_color -? you will get the following:
  term_color 34 = will return the color for 34 (green lime backgrown with white foreground)
 
 ## TBD FUTURE FIX
-  To accept the hexidecimal number as input also
+  To accept the hexidecimal number as input rather then the integer

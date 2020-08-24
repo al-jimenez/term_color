@@ -24,7 +24,7 @@ term_color() {
 
     OPTIONS:
       <none>             - display chart of all colors with HTML hex # equivalent
-      #                  - display color's HTML hex # equivalent
+      #                  - displayed color's # and show its color
       l  | list          - display color chart of HTML color codes
       fg | foreground #  - enter set foreground color specified
       bg | background #  - enter set background color specified
@@ -37,5 +37,5 @@ term_color() {
     printf "\n"
     return;
   }
-  [[ "${1}" != ""   ]] && { html_color ${1}; printf "\n"; return; }      
+  [[ "${1}" != ""   ]] && { html_color ${1}; printf "\n"; return; }
   }

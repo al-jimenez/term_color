@@ -37,6 +37,5 @@ term_color() {
     printf "\n"
     return;
   }
-  [[ "${1}" != ""   ]] && { html_color ${1}; printf "\n"; return; }                       #
+  [[ "${1}" != ""   ]] && { html_color ${1}; printf "\n"; return; }      
   }
-  

@@ -29,7 +29,6 @@ html_color(){
     return 0;
 }
 
-
 # 📌 term_color() - display color chart & command using tput ANSI commands
 # ------------------------------------------------------------------------------
 term_color() {

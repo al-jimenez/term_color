@@ -1,6 +1,36 @@
 #!/usr/bin/env bash
 
-# 📌 html_color_chart() - display color chart & command using tput ANSI commands
+# 📌 html_colors - display color with HTML hex numbers
+# ------------------------------------------------------------------------------
+html_color(){
+    dec=$(($1%256))   ### input must be a number in range 0-255.
+    foreground="15";
+    if [ "$dec" -lt "16" ]; then
+        [[ ${1} ==  7 ]] && foreground="0"; [[ ${1} == 15 ]] && foreground="0";
+        bas=$(( dec%16 )); mul=128;
+        [ "$bas" -eq "7" ] && mul=192
+        [ "$bas" -eq "8" ] && bas=7
+        [ "$bas" -gt "8" ] && mul=255
+        a="$((  (bas&1)    *mul ))"; b="$(( ((bas&2)>>1)*mul ))";  c="$(( ((bas&4)>>2)*mul ))";
+        tput setaf 7; printf ' %3s: ' "$dec"; tput setaf ${foreground}; tput setab $dec; printf '#%02x%02x%02x' "$a" "$b" "$c";
+        tput setaf $dec; tput sgr0; printf " ";
+    elif [ "$dec" -gt 15 ] && [ "$dec" -lt 232 ]; then
+        b=$(( (dec-16)%6  )); b=$(( b==0?0: b*40 + 55 ))
+        g=$(( (dec-16)/6%6)); g=$(( g==0?0: g*40 + 55 ))
+        r=$(( (dec-16)/36 )); r=$(( r==0?0: r*40 + 55 ))
+        tput setaf 7; printf ' %3s: ' "$dec"; tput setaf ${foreground}; tput setab $dec; printf '#%02x%02x%02x' "$r" "$g" "$b";
+        tput setaf $dec; tput sgr0; printf " ";
+    else
+        [[ ${1} > 247 ]] && foreground="0";
+        gray=$(( (dec-232)*10+8 ))
+        tput setaf 7; printf ' %3s: ' "$dec"; tput setaf ${foreground}; tput setab $dec; printf '#%02x%02x%02x' "$gray" "$gray" "$gray";
+        tput setaf $dec; tput sgr0; printf " ";
+    fi
+    return 0;
+}
+
+
+# 📌 term_color() - display color chart & command using tput ANSI commands
 # ------------------------------------------------------------------------------
 term_color() {
   [[ -z ${1}                ]] && { shift; ${FUNCNAME[0]} l ; return; }
